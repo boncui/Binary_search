@@ -1,0 +1,50 @@
+#Binary Seach Operation in Python
+#Guided by FreeCodeCamp
+#Written by David Cui
+
+#Binary Search Algorithms
+    #repeatedly splitting the group of data until the target is found
+    #Binary Search Trees take in two inputs
+        #A list/ group of large data
+        #a target
+
+[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    #1.) The algorithm takes the number of data and splits it in half
+        #There are 9 indexes in the list above
+            #(0 + 9)/2 (Takes the index of the first and last and adds them together) (then divide in half)
+
+
+#Steps to take
+
+#a function that takes a list and target parameter
+#multiple variables: middle, start, end, and steps
+#Use recursion or while loop to repeat the process until the target is found
+#increase the steps each time a split is done
+# Conditions: if the target is less than, middle, or greater than
+    #Delete that part of the list or focus on the part of the list with the target
+
+def binary_search(list, target):
+    middle = 0
+    start = 0
+    end = len(list)
+    steps = 0
+    
+    while(start <= end):
+        print(f"Steps, {steps} : {str(list[start:end + 1])}")
+        
+        steps += 1
+        middle = (start + end) // 2 #ALL DIVISON with INT is // not / (/ is only for float)
+        
+        if target == list[middle]:
+            return middle
+        elif target < list[middle]:
+            end = middle-1
+        else:
+            start = middle + 1
+    
+    return -1
+
+my_list = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+target = 9
+
+binary_search(my_list, target)
